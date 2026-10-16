@@ -17,9 +17,9 @@ A lightwight, high-performance in-memory key-value database built with modern C+
 ## Supported Commands
 | Command | Arguments | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `SET` | `<key> <value>` | Stores or updates a key-value pair | `SET user arda` |
-| `GET` | `<key>` | Retrieves the value of a key | `GET user` |
-| `DEL` | `<key>` | Deletes the key from memory | `DEL user` |
+| `SET` | `<key> <value>` | Stores or updates a key-value pair | `SET key value` |
+| `GET` | `<key>` | Retrieves the value of a key | `GET key` |
+| `DEL` | `<key>` | Deletes the key from memory | `DEL key` |
 | `QUIT` / `EXIT` | *None* | Closes the CLI session | `QUIT` |
 
 ---
