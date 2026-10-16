@@ -1,0 +1,12 @@
+# Build folder
+build/
+bin/
+lib/
+
+# VS Code settings
+.vscode/
+
+# Operating System
+.DS_Store
+*.o
+*.out
