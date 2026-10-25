@@ -36,3 +36,27 @@ TEST(KVStoreTest, DeleteKeyProperly) {
 
     EXPECT_FALSE(store.del("KEY"));
 }
+
+TEST(KVStoreTest, KeyExpiresAfterTTL) {
+    KVStore store;
+    store.set("temp", "data", 1);
+
+    auto val1 = store.get("temp");
+    ASSERT_TRUE(val1.has_value());
+    EXPECT_EQ(val1.value(), "data");
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1100));
+
+    auto val2 = store.get("temp");
+    EXPECT_FALSE(val2.has_value());
+}
+
+TEST(KVStoreTest, ExpireCommandWorks) {
+    KVStore store;
+    store.set("perma", "123");
+
+    EXPECT_EQ(store.ttl("perma").value_or(-2), -1);
+
+    EXPECT_TRUE(store.expire("perma", 2));
+    EXPECT_GT(store.ttl("perma").value_or(0), 0);
+}
